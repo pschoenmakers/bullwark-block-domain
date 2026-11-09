@@ -4,7 +4,7 @@
 /**
  * Stubbed-host smoke test for the Block Domain plugin.
  *
- * It loads the real src/index.js inside a vm context, provides the modules the
+ * It loads the real index.js inside a vm context, provides the modules the
  * Bulwark sandbox provides, and answers JMAP requests with an in-memory fake of
  * Stalwart's blocked-domains lookup. No network, no real mail server.
  *
@@ -18,7 +18,7 @@ const vm = require('node:vm');
 
 const ROOT = path.join(__dirname, '..');
 const PLUGIN_DIR = path.join(ROOT, 'block-domain');
-const SOURCE_PATH = path.join(PLUGIN_DIR, 'src', 'index.js');
+const SOURCE_PATH = path.join(PLUGIN_DIR, 'index.js');
 const MANIFEST_PATH = path.join(PLUGIN_DIR, 'manifest.json');
 const ICON_PATH = path.join(PLUGIN_DIR, 'icon.png');
 

@@ -2,7 +2,7 @@
   "id": "block-domain",
   "name": "Block Domain",
   "version": "1.0.0",
-  "author": "Bullwark Block Domain contributors",
+  "author": "Paul Schoenmakers",
   "description": "Block or unblock a sender's domain in Stalwart's server-wide blocked-domains list, directly from the message list or the Spam folder.",
   "type": "ui-extension",
   "entrypoint": "index.js",

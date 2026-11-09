@@ -7,7 +7,7 @@ spam-filter lookup, so blocked mail is rejected at SMTP time instead of merely
 being moved to Spam.
 
 Everything ships as one readable CommonJS file. There is no build step and no
-third-party runtime dependency: the source in `block-domain/src/index.js` is the
+third-party runtime dependency: the source in `block-domain/index.js` is the
 exact file installed as `index.js`.
 
 ## Features
@@ -183,7 +183,7 @@ All server work is JMAP over the configured Stalwart URL:
 block-domain/
   manifest.json      plugin metadata, config, settings, credential, locales
   icon.png           512 × 512 plugin icon
-  src/index.js       the entire plugin (also shipped as index.js)
+  index.js           the entire plugin (also shipped as index.js)
 test/
   smoke.cjs          stubbed-host smoke test, no network
 scripts/
@@ -191,11 +191,11 @@ scripts/
 ```
 
 There is deliberately **no build step and no npm dependency** in the plugin
-folder. Edit `src/index.js`, run the checks, then package.
+folder. Edit `index.js`, run the checks, then package.
 
 ```sh
 # Syntax check
-node --check block-domain/src/index.js
+node --check block-domain/index.js
 node -e 'JSON.parse(require("fs").readFileSync("block-domain/manifest.json", "utf8"))'
 
 # Smoke test with a fake Bulwark host and a fake Stalwart JMAP server

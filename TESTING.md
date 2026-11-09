@@ -6,12 +6,12 @@ pass against a real Stalwart instance. Both are expected before a release.
 ## Automated smoke test
 
 ```sh
-node --check block-domain/src/index.js
+node --check block-domain/index.js
 node -e 'JSON.parse(require("fs").readFileSync("block-domain/manifest.json", "utf8"))'
 node test/smoke.cjs
 ```
 
-`test/smoke.cjs` loads the real `block-domain/src/index.js` in a `vm` context
+`test/smoke.cjs` loads the real `block-domain/index.js` in a `vm` context
 that provides `react`, `@plugin-host` and `@plugin-host/ui`, just like the
 Bulwark sandbox. It replaces Stalwart with an in-memory JMAP fake and checks:
 

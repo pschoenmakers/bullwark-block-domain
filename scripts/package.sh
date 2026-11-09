@@ -11,7 +11,7 @@ PLUGIN_DIR="$ROOT/block-domain"
 OUT_DIR="$ROOT/dist"
 OUT_FILE="$OUT_DIR/block-domain.zip"
 
-for file in "$PLUGIN_DIR/manifest.json" "$PLUGIN_DIR/icon.png" "$PLUGIN_DIR/src/index.js"; do
+for file in "$PLUGIN_DIR/manifest.json" "$PLUGIN_DIR/icon.png" "$PLUGIN_DIR/index.js"; do
   if [[ ! -f "$file" ]]; then
     echo "Missing required file: $file" >&2
     exit 1
@@ -35,7 +35,7 @@ trap 'rm -rf "$STAGE"' EXIT
 
 cp "$PLUGIN_DIR/manifest.json" "$STAGE/manifest.json"
 cp "$PLUGIN_DIR/icon.png" "$STAGE/icon.png"
-cp "$PLUGIN_DIR/src/index.js" "$STAGE/index.js"
+cp "$PLUGIN_DIR/index.js" "$STAGE/index.js"
 
 # The manifest points at index.js at the archive root; never ship src/ paths.
 rm -f "$OUT_FILE"
