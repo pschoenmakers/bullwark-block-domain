@@ -1,0 +1,60 @@
+{
+  "id": "block-domain",
+  "name": "Block Domain",
+  "version": "1.0.0",
+  "author": "Bullwark Block Domain contributors",
+  "description": "Block or unblock a sender's domain in Stalwart's server-wide blocked-domains list, directly from the message list or the Spam folder.",
+  "type": "ui-extension",
+  "entrypoint": "index.js",
+  "icon": "icon.png",
+  "minAppVersion": "1.15.0",
+  "permissions": [
+    "email:read",
+    "ui:toolbar",
+    "ui:message-list",
+    "ui:settings-section",
+    "http:proxy"
+  ],
+  "configSchema": {
+    "stalwartUrl": {
+      "type": "string",
+      "label": "Stalwart URL",
+      "description": "The address of the Stalwart server. The plugin calls its JMAP endpoint at <this address>/jmap/.",
+      "placeholder": "mail.example.com",
+      "required": true
+    },
+    "apiKey": {
+      "type": "secret",
+      "label": "API key",
+      "description": "A least-privilege API key that may query and change blocked-domains lookup entries and run ReloadLookupStores.",
+      "required": true
+    }
+  },
+  "settingsSchema": {
+    "blockTarget": {
+      "type": "select",
+      "label": "settings.blockTarget.label",
+      "description": "settings.blockTarget.description",
+      "options": ["target.ask", "target.exact", "target.base"],
+      "default": "target.ask"
+    }
+  },
+  "locales": {
+    "en": {
+      "settings.blockTarget.label": "When the sender is on a subdomain",
+      "settings.blockTarget.description": "Choose whether to ask each time, block only the exact sender domain, or block its registrable base domain and all of its subdomains.",
+      "target.ask": "Ask me each time",
+      "target.exact": "Block only the exact domain",
+      "target.base": "Block the base domain and all subdomains"
+    }
+  },
+  "credentials": {
+    "stalwart": {
+      "label": "Stalwart",
+      "scope": "admin",
+      "inject": { "type": "bearer" },
+      "secretKey": "apiKey",
+      "originKey": "stalwartUrl"
+    }
+  }
+}
